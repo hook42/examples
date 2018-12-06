@@ -36,7 +36,13 @@ class CatFactsClient {
       ]
     ]);
 
-    return Json::decode($response->getBody());
+    $data = Json::decode($response->getBody());
+
+    if ($amount == 1) {
+      $data = [$data];
+    }
+
+    return $data;
   }
 
 }
